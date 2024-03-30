@@ -1,0 +1,32 @@
+
+		TEXT STEGANOGRAPHY OPERATIONS
+1. Encode the Text message
+2. Decode the Text message
+3. Exit
+Enter the Choice (1/2/3): 1
+Enter encryption key (an integer value): 268
+Enter carrier text: hello
+
+Enter data to be encoded: steganography
+
+Final Encoded Text: hello abmoivwozixpg
+
+		TEXT STEGANOGRAPHY OPERATIONS
+1. Encode the Text message
+2. Decode the Text message
+3. Exit
+Enter the Choice (1/2/3): 2
+Enter encoded text: hello abmoivwozixpg
+Enter decryption key (an integer value): 268
+
+Decoded Message: steganography
+
+		TEXT STEGANOGRAPHY OPERATIONS
+1. Encode the Text message
+2. Decode the Text message
+3. Exit
+Enter the Choice (1/2/3): 3
+
+Exiting the program. Goodbye!
+
+=== Code Execution Successful ===

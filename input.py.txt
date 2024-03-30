@@ -1,0 +1,68 @@
+def encrypt(text, key):
+    encrypted_text = ""
+    for char in text:
+        if char.isalpha():
+            if char.islower():
+                encrypted_text += chr((ord(char) - ord('a') + key) % 26 + ord('a'))
+            else:
+                encrypted_text += chr((ord(char) - ord('A') + key) % 26 + ord('A'))
+        else:
+            encrypted_text += char
+    return encrypted_text
+
+def decrypt(encrypted_text, key):
+    decrypted_text = ""
+    for char in encrypted_text:
+        if char.isalpha():
+            if char.islower():
+                decrypted_text += chr((ord(char) - ord('a') - key) % 26 + ord('a'))
+            else:
+                decrypted_text += chr((ord(char) - ord('A') - key) % 26 + ord('A'))
+        else:
+            decrypted_text += char
+    return decrypted_text
+
+def txt_encode(text, key):
+    encrypted_text = encrypt(text, key)
+    return encrypted_text
+
+def encode_txt_data(key, carrier_text):
+    text_to_encode = input("\nEnter data to be encoded: ")
+    encoded_text = txt_encode(text_to_encode, key)
+    final_text = carrier_text + " " + encoded_text  # Combine carrier text and encoded text
+    print("\nFinal Encoded Text:", final_text)
+    return final_text
+
+def decode_txt_data(encoded_text, key):
+    parts = encoded_text.split()
+    if len(parts) < 2:
+        print("\nError: Invalid encoded text format.")
+        return
+    encoded_message = parts[-1]  # Extract the encoded part
+    decrypted_text = decrypt(encoded_message, key)
+    print("\nDecoded Message:", decrypted_text)
+
+def txt_steg():
+    while True:
+        print("\n\t\tTEXT STEGANOGRAPHY OPERATIONS")
+        print("1. Encode the Text message")
+        print("2. Decode the Text message")
+        print("3. Exit")
+        choice = input("Enter the Choice (1/2/3): ").strip()
+        
+        if choice == '1':
+            key = int(input("Enter encryption key (an integer value): "))
+            carrier_text = input("Enter carrier text: ")
+            encoded_text = encode_txt_data(key, carrier_text)
+        elif choice == '2':
+            encoded_text = input("Enter encoded text: ")
+            key = int(input("Enter decryption key (an integer value): "))
+            decode_txt_data(encoded_text, key)
+        elif choice == '3':
+            print("\nExiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid Choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    txt_steg()
